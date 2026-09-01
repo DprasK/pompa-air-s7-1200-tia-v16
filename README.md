@@ -12,7 +12,8 @@ Proyek kontrol pompa air untuk **Siemens S7-1200 CPU 1214C DC/DC/DC** (`6ES7 214
 | TIA Portal V16 — Software rebuild all | 0 error, 0 warning |
 | FB LAD | 53 network |
 | Tabel I/O | 13 tag |
-| CRC arsip `.zap16` | Lulus, 60 entry |
+| Watch table `WT_Pump_Test` | 19 entri |
+| CRC arsip `.zap16` | Lulus, 50 entry |
 | Uji diferensial logika | 61.024 scan |
 | Perbandingan wiring XML | 12.000 scan |
 | PLCSIM / PLC fisik | Belum dijalankan |
@@ -22,6 +23,7 @@ Proyek kontrol pompa air untuk **Siemens S7-1200 CPU 1214C DC/DC/DC** (`6ES7 214
 - `Main [OB1]` dalam LAD memanggil `FB_PumpControl_LAD [FB2]`.
 - `DB_PumpControl_LAD [DB2]` menjadi instance DB untuk FB2.
 - `Pump_IO_LAD` berisi alamat I/O tetap.
+- `WT_Pump_Test` sudah tersedia untuk monitoring dan modifikasi nilai saat uji PLCSIM.
 - Blok SCL lama disimpan di `source/reference_scl/` sebagai referensi dan tidak dipanggil oleh OB1.
 
 ## Menggunakan proyek
@@ -31,7 +33,7 @@ Proyek kontrol pompa air untuk **Siemens S7-1200 CPU 1214C DC/DC/DC** (`6ES7 214
 3. Pilih arsip tersebut dan tentukan folder tujuan lokal.
 4. Jalankan **Compile > Software (rebuild all)**.
 5. Periksa konfigurasi CPU, alamat I/O, wiring, proteksi akses, dan interlock sebelum download.
-6. Ikuti [panduan uji PLCSIM](docs/UJI_PLCSIM.md).
+6. Buka `WT_Pump_Test`, aktifkan monitoring, lalu ikuti [panduan uji PLCSIM](docs/UJI_PLCSIM.md).
 
 Ekstensi `.ap16` adalah bagian dari folder proyek TIA dan tidak boleh dipindahkan sendiri. Arsip `.zap16` dipakai agar seluruh proyek dapat dipindahkan dan di-*retrieve* dengan benar. File `.als16` tidak diperlukan karena proyek ini standalone, bukan sesi Multiuser.
 
@@ -68,4 +70,3 @@ Jalankan validasi repository dengan:
 ```powershell
 python tools/validate_delivery.py
 ```
-

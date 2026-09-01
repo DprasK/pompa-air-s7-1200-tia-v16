@@ -7,7 +7,7 @@ Uji ini belum dijalankan. Lakukan secara offline di TIA Portal V16/PLCSIM sebelu
 1. Retrieve `Pompa_Air_LAD_V16.zap16`.
 2. Compile software dengan **rebuild all** dan pastikan 0 error.
 3. Start PLCSIM untuk CPU 1214C yang dikonfigurasi; download hanya ke simulator.
-4. Buat watch table untuk semua tag pada `IO_List.csv`, serta `DB_PumpControl_LAD`.State dan `.FaultBits`.
+4. Buka watch table **`WT_Pump_Test`** yang sudah tersedia di proyek. Tabel ini memuat 13 tag I/O, `State`, `FaultBits`, `RunningConfirmed`, serta tiga preset waktu.
 5. Untuk kondisi sehat awal, set `Pump_StopOK`, `Pump_SafetyOK`, `Pump_OverloadOK`, dan `Pump_SourceWaterOK` ke 1. Set feedback mengikuti command kecuali saat menguji fault.
 
 ## Skenario minimum

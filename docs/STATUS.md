@@ -1,9 +1,10 @@
 # Status Validasi
 
 - Arsip: `Pompa_Air_LAD_V16.zap16`
-- Ukuran: 534835 byte
-- SHA-256: `65a72e13ff16726609517d6af1e0a326627a98e8f811c0ebe68291ef2cf5d25f`
-- Uji CRC ZIP/ZAP: **PASS** (60 entry, tidak ada entry rusak)
+- Ukuran: 521690 byte
+- SHA-256: `85553ba576c54c7f4a11f501584312e1924d202a5d70ade4b36be1abf05909ac`
+- Uji CRC ZIP/ZAP: **PASS** (50 entry, tidak ada entry rusak)
+- Watch table: **WT_Pump_Test**, 19 entri, terdeteksi di dalam arsip
 - TIA Portal V16 Software rebuild all: **0 error, 0 warning**
 - Main OB1: **LAD**, memanggil FB2 dengan DB2
 - FB2: **53 network LAD**
