@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Document>
+  <Engineering version="V16" />
+  <SW.Blocks.OB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface>
+        <Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v4">
+          <Section Name="Input">
+            <Member Name="Initial_Call" Datatype="Bool" Informative="true" />
+            <Member Name="Remanence" Datatype="Bool" Informative="true" />
+          </Section>
+          <Section Name="Temp" />
+          <Section Name="Constant" />
+        </Sections>
+      </Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>Main</Name>
+      <Number>1</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SecondaryType>ProgramCycle</SecondaryType>
+    </AttributeList>
+    <ObjectList>
+      <SW.Blocks.CompileUnit ID="1" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource>
+            <FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+              <Parts>
+                <Access UId="21" Scope="LocalVariable">
+                  <Symbol>
+                    <Component Name="Initial_Call" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="22">
+                  <Symbol>
+                    <Component Name="Pump_AutoMode" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="23">
+                  <Symbol>
+                    <Component Name="Pump_StartButton" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="24">
+                  <Symbol>
+                    <Component Name="Pump_StopOK" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="25">
+                  <Symbol>
+                    <Component Name="Pump_SafetyOK" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="26">
+                  <Symbol>
+                    <Component Name="Pump_OverloadOK" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="27">
+                  <Symbol>
+                    <Component Name="Pump_SourceWaterOK" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="28">
+                  <Symbol>
+                    <Component Name="Pump_LowWet" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="29">
+                  <Symbol>
+                    <Component Name="Pump_HighWet" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="30">
+                  <Symbol>
+                    <Component Name="Pump_ResetButton" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="31">
+                  <Symbol>
+                    <Component Name="Pump_MotorFeedback" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="32">
+                  <Symbol>
+                    <Component Name="Pump_PumpCmd" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="33">
+                  <Symbol>
+                    <Component Name="Pump_Alarm" />
+                  </Symbol>
+                </Access>
+                <Access Scope="GlobalVariable" UId="34">
+                  <Symbol>
+                    <Component Name="Pump_Enabled" />
+                  </Symbol>
+                </Access>
+                <Access UId="35" Scope="TypedConstant">
+                  <Constant>
+                    <ConstantValue>T#5s</ConstantValue>
+                  </Constant>
+                </Access>
+                <Access UId="36" Scope="TypedConstant">
+                  <Constant>
+                    <ConstantValue>T#3s</ConstantValue>
+                  </Constant>
+                </Access>
+                <Access UId="37" Scope="TypedConstant">
+                  <Constant>
+                    <ConstantValue>T#10m</ConstantValue>
+                  </Constant>
+                </Access>
+                <Call UId="38">
+                  <CallInfo Name="FB_PumpControl_LAD" BlockType="FB">
+                    <Instance Scope="GlobalVariable" UId="39">
+                      <Component Name="DB_PumpControl_LAD" />
+                    </Instance>
+                    <Parameter Name="FirstScan" Section="Input" Type="Bool" />
+                    <Parameter Name="AutoMode" Section="Input" Type="Bool" />
+                    <Parameter Name="StartButton" Section="Input" Type="Bool" />
+                    <Parameter Name="StopOK" Section="Input" Type="Bool" />
+                    <Parameter Name="SafetyOK" Section="Input" Type="Bool" />
+                    <Parameter Name="OverloadOK" Section="Input" Type="Bool" />
+                    <Parameter Name="SourceWaterOK" Section="Input" Type="Bool" />
+                    <Parameter Name="LowWet" Section="Input" Type="Bool" />
+                    <Parameter Name="HighWet" Section="Input" Type="Bool" />
+                    <Parameter Name="ResetButton" Section="Input" Type="Bool" />
+                    <Parameter Name="MotorFeedback" Section="Input" Type="Bool" />
+                    <Parameter Name="MinOffTime" Section="Input" Type="Time" />
+                    <Parameter Name="FeedbackTime" Section="Input" Type="Time" />
+                    <Parameter Name="MaxRunTime" Section="Input" Type="Time" />
+                    <Parameter Name="PumpCmd" Section="Output" Type="Bool" />
+                    <Parameter Name="Alarm" Section="Output" Type="Bool" />
+                    <Parameter Name="Enabled" Section="Output" Type="Bool" />
+                    <Parameter Name="RunningConfirmed" Section="Output" Type="Bool" />
+                    <Parameter Name="FaultBits" Section="Output" Type="Word" />
+                    <Parameter Name="State" Section="Output" Type="USInt" />
+                  </CallInfo>
+                </Call>
+              </Parts>
+              <Wires>
+                <Wire UId="40">
+                  <IdentCon UId="21" />
+                  <NameCon UId="38" Name="FirstScan" />
+                </Wire>
+                <Wire UId="41">
+                  <IdentCon UId="22" />
+                  <NameCon UId="38" Name="AutoMode" />
+                </Wire>
+                <Wire UId="42">
+                  <IdentCon UId="23" />
+                  <NameCon UId="38" Name="StartButton" />
+                </Wire>
+                <Wire UId="43">
+                  <IdentCon UId="24" />
+                  <NameCon UId="38" Name="StopOK" />
+                </Wire>
+                <Wire UId="44">
+                  <IdentCon UId="25" />
+                  <NameCon UId="38" Name="SafetyOK" />
+                </Wire>
+                <Wire UId="45">
+                  <IdentCon UId="26" />
+                  <NameCon UId="38" Name="OverloadOK" />
+                </Wire>
+                <Wire UId="46">
+                  <IdentCon UId="27" />
+                  <NameCon UId="38" Name="SourceWaterOK" />
+                </Wire>
+                <Wire UId="47">
+                  <IdentCon UId="28" />
+                  <NameCon UId="38" Name="LowWet" />
+                </Wire>
+                <Wire UId="48">
+                  <IdentCon UId="29" />
+                  <NameCon UId="38" Name="HighWet" />
+                </Wire>
+                <Wire UId="49">
+                  <IdentCon UId="30" />
+                  <NameCon UId="38" Name="ResetButton" />
+                </Wire>
+                <Wire UId="50">
+                  <IdentCon UId="31" />
+                  <NameCon UId="38" Name="MotorFeedback" />
+                </Wire>
+                <Wire UId="51">
+                  <IdentCon UId="35" />
+                  <NameCon UId="38" Name="MinOffTime" />
+                </Wire>
+                <Wire UId="52">
+                  <IdentCon UId="36" />
+                  <NameCon UId="38" Name="FeedbackTime" />
+                </Wire>
+                <Wire UId="53">
+                  <IdentCon UId="37" />
+                  <NameCon UId="38" Name="MaxRunTime" />
+                </Wire>
+                <Wire UId="54">
+                  <NameCon UId="38" Name="PumpCmd" />
+                  <IdentCon UId="32" />
+                </Wire>
+                <Wire UId="55">
+                  <NameCon UId="38" Name="Alarm" />
+                  <IdentCon UId="33" />
+                </Wire>
+                <Wire UId="56">
+                  <NameCon UId="38" Name="Enabled" />
+                  <IdentCon UId="34" />
+                </Wire>
+                <Wire UId="58">
+                  <NameCon UId="38" Name="RunningConfirmed" />
+                  <OpenCon UId="57" />
+                </Wire>
+                <Wire UId="60">
+                  <NameCon UId="38" Name="FaultBits" />
+                  <OpenCon UId="59" />
+                </Wire>
+                <Wire UId="62">
+                  <NameCon UId="38" Name="State" />
+                  <OpenCon UId="61" />
+                </Wire>
+                <Wire UId="63">
+                  <Powerrail />
+                  <NameCon UId="38" Name="en" />
+                </Wire>
+                <Wire UId="65">
+                  <NameCon UId="38" Name="eno" />
+                  <OpenCon UId="64" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Pump control - cyclic LAD call; FirstScan from OB1 Initial_Call</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+    </ObjectList>
+  </SW.Blocks.OB>
+</Document>

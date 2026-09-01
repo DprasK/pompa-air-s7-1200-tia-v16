@@ -1,0 +1,28 @@
+{
+  "project": "Pompa_Air_LAD_V16",
+  "tia_version": "V16",
+  "cpu": "S7-1200 CPU 1214C DC/DC/DC, 6ES7 214-1AG40-0XB0, FW 4.4",
+  "archive": {
+    "file": "Pompa_Air_LAD_V16.zap16",
+    "bytes": 534835,
+    "sha256": "65a72e13ff16726609517d6af1e0a326627a98e8f811c0ebe68291ef2cf5d25f",
+    "crc": "passed; 60 entries"
+  },
+  "tia_compile": {
+    "software_rebuild_all": {
+      "errors": 0,
+      "warnings": 0
+    }
+  },
+  "lad": {
+    "fb": "FB_PumpControl_LAD [FB2]",
+    "db": "DB_PumpControl_LAD [DB2]",
+    "networks": 53
+  },
+  "tests": {
+    "behavioral_groups": 20,
+    "differential_scans": 61024,
+    "xml_wiring_comparisons": 12000,
+    "plcsim": "not run"
+  }
+}

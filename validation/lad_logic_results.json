@@ -1,0 +1,6 @@
+{
+  "networks": 53,
+  "behavioral_groups_passed": 20,
+  "differential_scans_passed": 61024,
+  "method": "Ordered LAD specification vs original SCL interpreter; not a Siemens compile or PLCSIM test"
+}
