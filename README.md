@@ -3,7 +3,7 @@
 Proyek kontrol pompa air untuk **Siemens S7-1200 CPU 1214C DC/DC/DC** (`6ES7 214-1AG40-0XB0`, firmware 4.4). Program utama menggunakan Ladder Diagram (LAD) dan telah dikompilasi di TIA Portal V16.
 
 > [!WARNING]
-> Proyek ini bukan program F-CPU atau fungsi keselamatan bersertifikat. Baca [dokumen keselamatan](docs/SAFETY.md) sebelum simulasi atau commissioning.
+> Penerapan proyek pada mesin wajib mengikuti [dokumen keselamatan](docs/SAFETY.md), hasil penilaian risiko, dan prosedur commissioning yang berlaku.
 
 ## Hasil validasi
 

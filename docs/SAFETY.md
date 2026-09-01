@@ -1,6 +1,6 @@
 # Catatan Keselamatan
 
-Program ini adalah contoh kontrol proses pada PLC standar S7-1200. Program tidak menggantikan fungsi keselamatan mesin dan tidak memiliki sertifikasi keselamatan fungsional.
+Program ini mengendalikan proses pompa pada PLC standar S7-1200. Penerapannya pada mesin wajib dilengkapi fungsi keselamatan sesuai hasil penilaian risiko dan ketentuan instalasi yang berlaku.
 
 - Emergency stop dan pemutusan energi berbahaya harus memakai rangkaian hardwired atau safety relay/F-CPU sesuai penilaian risiko.
 - Proteksi overload motor harus tetap dapat memutus kontaktor tanpa bergantung pada program PLC standar.
@@ -11,4 +11,3 @@ Program ini adalah contoh kontrol proses pada PLC standar S7-1200. Program tidak
 - Saat commissioning, gunakan prosedur lockout/tagout dan personel yang kompeten.
 
 Tidak ada download ke PLC fisik, perubahan RUN/STOP, atau uji PLCSIM yang dilakukan saat repository ini dibuat.
-
