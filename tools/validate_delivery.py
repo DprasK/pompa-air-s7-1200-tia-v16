@@ -16,6 +16,17 @@ MAIN_XML = ROOT / "source" / "Main_LAD.xml"
 IO_XML = ROOT / "source" / "Pump_IO_LAD.xml"
 IO_CSV = ROOT / "docs" / "IO_List.csv"
 MANIFEST = ROOT / "validation" / "delivery_manifest.json"
+PLCSIM_RESULTS = ROOT / "validation" / "PLCSIM_TEST_RESULTS.md"
+PLCSIM_EVIDENCE = [
+    ROOT / "validation" / f"PLCSIM_{index:02d}_{name}.png"
+    for index, name in [
+        (1, "Reset_Clear"),
+        (2, "Auto_Running"),
+        (3, "High_Level_Stop"),
+        (4, "Source_Fault"),
+        (5, "Final_Safe_Stop"),
+    ]
+]
 
 EXPECTED_ARCHIVE_SHA256 = "85553ba576c54c7f4a11f501584312e1924d202a5d70ade4b36be1abf05909ac"
 
@@ -34,7 +45,7 @@ def fail(message: str) -> None:
 
 
 def main() -> None:
-    required = [ARCHIVE, FB_XML, MAIN_XML, IO_XML, IO_CSV, MANIFEST]
+    required = [ARCHIVE, FB_XML, MAIN_XML, IO_XML, IO_CSV, MANIFEST, PLCSIM_RESULTS, *PLCSIM_EVIDENCE]
     missing = [str(path.relative_to(ROOT)) for path in required if not path.is_file()]
     if missing:
         fail(f"missing files: {', '.join(missing)}")
@@ -77,6 +88,9 @@ def main() -> None:
     compile_result = manifest["tia_compile"]["software_rebuild_all"]
     if compile_result != {"errors": 0, "warnings": 0}:
         fail(f"unexpected TIA compile result: {compile_result}")
+    plcsim_result = manifest["tests"]["plcsim"]
+    if plcsim_result.get("status") != "passed" or len(plcsim_result.get("scenarios", [])) != 4:
+        fail(f"unexpected PLCSIM result: {plcsim_result}")
 
     print("PASS")
     print(f"Archive SHA-256 : {archive_hash}")
@@ -85,6 +99,7 @@ def main() -> None:
     print(f"LAD networks    : {networks}")
     print(f"I/O tags        : {len(io_rows)}")
     print("TIA compile     : 0 errors, 0 warnings")
+    print("S7-PLCSIM       : 4 core scenarios passed; 5 evidence images")
 
 
 if __name__ == "__main__":

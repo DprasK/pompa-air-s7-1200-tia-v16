@@ -10,4 +10,4 @@ Program ini mengendalikan proses pompa pada PLC standar S7-1200. Penerapannya pa
 - Jalankan PLCSIM dan FAT terdokumentasi sebelum download ke PLC fisik.
 - Saat commissioning, gunakan prosedur lockout/tagout dan personel yang kompeten.
 
-Tidak ada download ke PLC fisik, perubahan RUN/STOP, atau uji PLCSIM yang dilakukan saat repository ini dibuat.
+Pengujian terdokumentasi hanya dilakukan pada S7-PLCSIM. Tidak ada koneksi atau download ke PLC fisik. Hasil simulator tidak menggantikan FAT, verifikasi wiring, dan commissioning keselamatan pada instalasi sebenarnya.

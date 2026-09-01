@@ -28,6 +28,16 @@
     "behavioral_groups": 20,
     "differential_scans": 61024,
     "xml_wiring_comparisons": 12000,
-    "plcsim": "not run"
+    "plcsim": {
+      "status": "passed",
+      "date": "2026-09-02",
+      "scenarios": [
+        "healthy reset clears latched faults without starting",
+        "AUTO demand reaches running-confirmed state",
+        "high level stops pump without fault",
+        "source-water loss latches fault bit 4"
+      ],
+      "final_state": "original physical I/O addresses and 3 s feedback time restored; forcing inactive; simulator CPU stopped"
+    }
   }
 }

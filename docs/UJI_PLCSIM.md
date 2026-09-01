@@ -1,6 +1,6 @@
 # Panduan Uji PLCSIM — Pompa Air LAD
 
-Uji ini belum dijalankan. Lakukan secara offline di TIA Portal V16/PLCSIM sebelum memakai PLC nyata.
+Empat skenario inti telah dijalankan pada S7-PLCSIM tanggal 2 September 2026 dan lulus. Hasil serta screenshot tersedia di [`validation/PLCSIM_TEST_RESULTS.md`](../validation/PLCSIM_TEST_RESULTS.md). Skenario lain di bawah tetap direkomendasikan sebelum commissioning.
 
 ## Persiapan
 

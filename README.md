@@ -16,7 +16,8 @@ Proyek kontrol pompa air untuk **Siemens S7-1200 CPU 1214C DC/DC/DC** (`6ES7 214
 | CRC arsip `.zap16` | Lulus, 50 entry |
 | Uji diferensial logika | 61.024 scan |
 | Perbandingan wiring XML | 12.000 scan |
-| PLCSIM / PLC fisik | Belum dijalankan |
+| S7-PLCSIM | Lulus: reset, AUTO running, stop level tinggi, fault sumber air |
+| PLC fisik | Tidak diuji |
 
 ## Struktur program
 

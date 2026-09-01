@@ -9,7 +9,9 @@
 - Main OB1: **LAD**, memanggil FB2 dengan DB2
 - FB2: **53 network LAD**
 - Tabel I/O: **13 tag**, tanpa alamat ambigu
-- PLCSIM: **belum dijalankan**
+- S7-PLCSIM (2 September 2026): **PASS** untuk reset fault, AUTO running, stop level tinggi, dan fault sumber air
+- Bukti PLCSIM: `validation/PLCSIM_01_Reset_Clear.png` sampai `validation/PLCSIM_05_Final_Safe_Stop.png`
+- Konfigurasi setelah uji: alamat `%I/%Q` asli dan `FeedbackTime=T#3s` dipulihkan; force tidak aktif; CPU simulator ditinggalkan pada STOP
 - PLC fisik: **tidak dihubungkan dan tidak di-download**
 
 Hardware rebuild pada proyek referensi sebelumnya menghasilkan 0 error dan 1 warning terkait level proteksi CPU. Perlindungan akses harus ditentukan saat commissioning; warning tersebut bukan error program LAD.
