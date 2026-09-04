@@ -1,7 +1,0 @@
-* text=auto
-*.scl text eol=crlf
-*.xml text eol=crlf
-*.csv text eol=crlf
-*.zap16 binary
-*.png binary
-

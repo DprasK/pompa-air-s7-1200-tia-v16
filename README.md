@@ -1,73 +1,41 @@
-# Pompa Air S7-1200 — TIA Portal V16 (LAD)
+# Pompa Air S7-1200 — TIA Portal V16
 
-Proyek kontrol pompa air untuk **Siemens S7-1200 CPU 1214C DC/DC/DC** (`6ES7 214-1AG40-0XB0`, firmware 4.4). Program utama menggunakan Ladder Diagram (LAD) dan telah dikompilasi di TIA Portal V16.
+Proyek kontrol pompa air sederhana berbasis **Ladder Diagram (LAD)** untuk **Siemens S7-1200 CPU 1214C DC/DC/DC** dan **S7-PLCSIM V16**.
 
-> [!WARNING]
-> Penerapan proyek pada mesin wajib mengikuti [dokumen keselamatan](docs/SAFETY.md), hasil penilaian risiko, dan prosedur commissioning yang berlaku.
+## File proyek
 
-## Hasil validasi
+- `Pompa_Air_LAD_V16.zap16` — arsip proyek native TIA Portal V16 yang dapat di-*retrieve* dan dimodifikasi.
 
-| Pemeriksaan | Hasil |
-|---|---:|
-| TIA Portal V16 — Software rebuild all | 0 error, 0 warning |
-| FB LAD | 53 network |
-| Tabel I/O | 13 tag |
-| Watch table `WT_Pump_Test` | 19 entri |
-| CRC arsip `.zap16` | Lulus, 50 entry |
-| Uji diferensial logika | 61.024 scan |
-| Perbandingan wiring XML | 12.000 scan |
-| S7-PLCSIM | Lulus: reset, AUTO running, stop level tinggi, fault sumber air |
-| PLC fisik | Tidak diuji |
+## Cara membuka
 
-## Struktur program
+1. Unduh `Pompa_Air_LAD_V16.zap16`.
+2. Buka TIA Portal V16.
+3. Pilih **Project > Retrieve**.
+4. Pilih arsip tersebut, lalu tentukan folder tujuan.
+5. Buka proyek hasil *retrieve*, lakukan **Compile > Software (rebuild all)**, lalu unduh ke S7-PLCSIM.
 
-- `Main [OB1]` dalam LAD memanggil `FB_PumpControl_LAD [FB2]`.
-- `DB_PumpControl_LAD [DB2]` menjadi instance DB untuk FB2.
-- `Pump_IO_LAD` berisi alamat I/O tetap.
-- `WT_Pump_Test` sudah tersedia untuk monitoring dan modifikasi nilai saat uji PLCSIM.
-- Blok SCL lama disimpan di `source/reference_scl/` sebagai referensi dan tidak dipanggil oleh OB1.
+Jangan mencoba membuka atau mengedit isi `.zap16` secara langsung. Modifikasi dilakukan pada proyek hasil *retrieve*.
 
-## Menggunakan proyek
-
-1. Unduh [project/Pompa_Air_LAD_V16.zap16](project/Pompa_Air_LAD_V16.zap16).
-2. Di TIA Portal V16, pilih **Project > Retrieve**.
-3. Pilih arsip tersebut dan tentukan folder tujuan lokal.
-4. Jalankan **Compile > Software (rebuild all)**.
-5. Periksa konfigurasi CPU, alamat I/O, wiring, proteksi akses, dan interlock sebelum download.
-6. Buka `WT_Pump_Test`, aktifkan monitoring, lalu ikuti [panduan uji PLCSIM](docs/UJI_PLCSIM.md).
-
-Ekstensi `.ap16` adalah bagian dari folder proyek TIA dan tidak boleh dipindahkan sendiri. Arsip `.zap16` dipakai agar seluruh proyek dapat dipindahkan dan di-*retrieve* dengan benar. File `.als16` tidak diperlukan karena proyek ini standalone, bukan sesi Multiuser.
-
-## I/O
-
-Daftar lengkap tersedia di [docs/IO_List.csv](docs/IO_List.csv).
+## I/O utama
 
 | Alamat | Tag | Fungsi |
 |---|---|---|
-| `%I0.0` | `Pump_AutoMode` | Pemilihan AUTO/MANUAL |
+| `%I0.0` | `Pump_AutoMode` | Pilihan AUTO/MANUAL |
 | `%I0.1` | `Pump_StartButton` | Tombol START |
 | `%I0.2` | `Pump_StopOK` | Rangkaian STOP sehat |
 | `%I0.3` | `Pump_SafetyOK` | Izin keselamatan |
-| `%I0.4` | `Pump_OverloadOK` | Kontak overload sehat |
+| `%I0.4` | `Pump_OverloadOK` | Overload sehat |
 | `%I0.5` | `Pump_SourceWaterOK` | Sumber air tersedia |
 | `%I0.6` | `Pump_LowWet` | Sensor level rendah |
 | `%I0.7` | `Pump_HighWet` | Sensor level tinggi |
 | `%I1.0` | `Pump_ResetButton` | Reset alarm |
-| `%I1.1` | `Pump_MotorFeedback` | Feedback kontaktor/motor |
-| `%Q0.0` | `Pump_PumpCmd` | Perintah kontaktor pompa |
+| `%I1.1` | `Pump_MotorFeedback` | Feedback motor |
+| `%Q0.0` | `Pump_PumpCmd` | Perintah pompa |
 | `%Q0.1` | `Pump_Alarm` | Alarm umum |
-| `%Q0.2` | `Pump_Enabled` | Kontrol siap |
+| `%Q0.2` | `Pump_Enabled` | Sistem siap |
 
-## Isi repository
+## Uji dengan PLCSIM
 
-- `project/`: arsip native TIA Portal V16.
-- `source/`: XML VCI LAD dan sumber SCL referensi.
-- `docs/`: daftar I/O, status, keselamatan, dan rencana uji PLCSIM.
-- `validation/`: manifest hasil pemeriksaan dan screenshot TIA Portal.
-- `tools/validate_delivery.py`: pemeriksaan lokal/CI tanpa dependensi eksternal.
+Gunakan tabel simulasi atau watch table `WT_Pump_Test` untuk mengubah nilai input `%I`. Tidak perlu memakai **Force**. Output `%Q` hanya dimonitor karena nilainya dikendalikan oleh program PLC.
 
-Jalankan validasi repository dengan:
-
-```powershell
-python tools/validate_delivery.py
-```
+> Proyek ini hanya contoh pembelajaran. Untuk mesin nyata, gunakan rangkaian keselamatan, proteksi motor, penilaian risiko, dan prosedur commissioning yang sesuai.
